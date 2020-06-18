@@ -5,13 +5,18 @@
 </template>
 
 <script>
-//import AppHeader from './components/common/AppHeader';
 
 export default {
   name: 'App',
-  // components: {
-  //   AppHeader,
-  // },
+    metaInfo: {
+      title: 'App',
+      titleTemplate: '%s | Zero Pro',
+      htmlAttrs: { lang: 'en' },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
+    },
 
   data: () => ({
     //
