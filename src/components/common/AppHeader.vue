@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+  <div>
     <v-app-bar
       app
       color="white"
@@ -8,6 +8,7 @@
     >
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
+        color="primary"
         @click="drawer = !drawer"
       />
       <div class="imageDiv">
@@ -30,6 +31,8 @@
           <v-tab
             v-for="(name, i) in items"
             :key="i"
+            :to="{ name }"
+            :exact="name === 'Home'"
             :ripple="false"
             active-class="text--primary"
             class="font-weight-bold primary--text"
@@ -40,15 +43,40 @@
           </v-tab>
         </v-tabs>
       </div>
-      <v-icon
-        @click="dial(phone)"
-      >mdi-phone</v-icon>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            color="primary"
+            v-bind="attrs"
+            v-on="on"
+          >mdi-information</v-icon>
+        </template>
+        <v-list>
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon color="primary">mdi-phone</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <a class = "accent--text" href="tel:+917778889000">{{phone}}</a>
+          </v-list-item-content>
+        </v-list-item>  
+        <v-divider inset></v-divider>
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon color="primary">mdi-email</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <a class = "accent--text" href="mailto:contactus@magtrak.com">contactus@magtrak.com</a>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      </v-menu> 
     </v-app-bar>
-   <NavigationDrawer
+    <NavigationDrawer
       v-model="drawer"
       :items="items"
     />
-  </v-app>
+  </div>
 </template>
 <script>
 import NavigationDrawer from './NavigationDrawer'
@@ -58,13 +86,14 @@ export default {
         NavigationDrawer
     },
     data:() =>({
+        dialog: false,
         phone:+917778889000,
         drawer:false,
         items: [
         'Home',
         'About',
+        'Products',
         'Contact',
-        'Pro',
       ],
     }),
     methods:{

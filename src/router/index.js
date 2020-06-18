@@ -16,8 +16,29 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: () => import('../components/common/AppHeader'),
-      
+      component: () => import('@/components/common/Index.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Home',
+          component: () => import('@/components/views/Home.vue'),
+        },
+        {
+          path: 'about',
+          name: 'About',
+          component: () => import('@/components/views/About.vue'),
+        },
+        {
+            path: 'products',
+            name: 'Products',
+            component: () => import('@/components/views/Products.vue'),
+        },
+        {
+            path: 'contact',
+            name: 'Contact',
+            component: () => import('@/components/views/Contact.vue'),
+        },
+      ],
     },
 
   ],
