@@ -4,13 +4,12 @@
       cycle
       hide-delimiter-background
       show-arrows-on-hover
+      height="auto"
       >
       <v-carousel-item
         v-for="(image,i) in images"
         :key="i"
         :src="image.src"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
       ></v-carousel-item>
     </v-carousel>
     <v-carousel
@@ -26,6 +25,7 @@
       >
         <v-card
           height="100%"
+          color="white"
         >
           <v-row
             class="fill-height"
@@ -33,7 +33,7 @@
             justify="center"
           >
           
-            <div class="display-2">{{ slide.text }}</div>
+            <h3 class="ml-4 primary--text">{{ slide.text }}</h3>
             <div v-if="slide.src"> 
               <v-avatar tile size="62" class="ml-4">
                  <img
@@ -47,11 +47,25 @@
         </v-card>
       </v-carousel-item>
     </v-carousel>
+    <div>
+      <video-background 
+        :src="require('../../assets/Sample.mp4')"
+        poster="/images/mainfoto.jpg"
+        style="max-height: 400px; height: 100vh;"
+        overlay="linear-gradient(45deg,#2a4ae430,#fb949e6b)" 
+      >
+        <h3 class="videoText font-weight-bold">WELCOME TO MAGTRAK!</h3>
+      </video-background>
+    </div>
   </div>
 </template>
 <script>
+import VideoBackground from 'vue-responsive-video-background-player'
 export default {
     name:'Home',
+    components:{
+      VideoBackground 
+    },
     data:()=>({
         images: [
           {
@@ -70,8 +84,9 @@ export default {
 }
 </script>
 <style scoped>
-.imageCarousel{
-  max-width: 400px;
-  height: auto;
+.videoText{
+  text-align: center;
+  margin-top:200px;
+  color:white
 }
 </style>
