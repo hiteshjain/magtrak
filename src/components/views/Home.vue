@@ -13,6 +13,7 @@
       ></v-carousel-item>
     </v-carousel>
     <v-carousel
+      class="mt-6"
       cycle
       height="100"
       hide-delimiter-background
@@ -25,15 +26,14 @@
       >
         <v-card
           height="100%"
-          color="white"
+          color="#ffffff"
         >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-          
-            <h3 class="ml-4 primary--text">{{ slide.text }}</h3>
+            <h3 class="ml-4 primary--text slideText">{{ slide.text }}</h3>
             <div v-if="slide.src"> 
               <v-avatar tile size="62" class="ml-4">
                  <img
@@ -42,31 +42,53 @@
                 >
               </v-avatar>
             </div>
-          
           </v-row>
         </v-card>
       </v-carousel-item>
     </v-carousel>
-    <div>
-      <video-background 
-        :src="require('../../assets/Sample.mp4')"
-        poster="/images/mainfoto.jpg"
-        style="max-height: 400px; height: 100vh;"
-        overlay="linear-gradient(45deg,#2a4ae430,#fb949e6b)" 
-      >
-        <h3 class="videoText font-weight-bold">WELCOME TO MAGTRAK!</h3>
-      </video-background>
+    <div class="videoDiv mt-6">
+      <video ref="videoRef" 
+        :src='require("@/assets/Sample.mp4")' 
+        autoplay muted loop 
+        width="100%"> 
+      </video>
+      <div class="headerContent">
+        <h3>WELCOME TO MAGTRAK</h3>
+        <v-btn @click="play()" color="accent">
+          <v-icon color="primary">mdi-play-box</v-icon>
+        </v-btn>
+      </div>
+    </div>
+    <div class="features mt-15">
+      <h1>PRODUCT FEATURES</h1>
+      <v-container>
+      <v-row>
+        <v-col 
+          v-for="(feature, i) in features"
+          :key="i"
+          cols="12"
+          sm="6"
+        >
+          <v-avatar size="62" class="featureImages">
+            <img
+              :src="feature.src"
+              alt=""
+            >
+          </v-avatar>
+          <div>
+            <h3 class="mx-15 featureText">{{feature.title}} </h3>
+          </div>
+        </v-col>
+      </v-row>
+     </v-container>
     </div>
   </div>
 </template>
 <script>
-import VideoBackground from 'vue-responsive-video-background-player'
 export default {
     name:'Home',
-    components:{
-      VideoBackground 
-    },
     data:()=>({
+        isPlaying:true,
         images: [
           {
             src: require('../../assets/duct-rooder-conduit-workers.jpg'),
@@ -80,7 +102,37 @@ export default {
           {text:'More than 100+ Happy Customers'},
           {text:'Make in India Initiative',src:require('../../assets/make-in-india-logo.jpg')}          
         ],
-    })
+        features:[
+          {
+            src:require('@/assets/dimension.png'),
+            title:'Accurate Dimension'
+          },
+          {
+            src:require('@/assets/reliability.png'),
+            title:'Solid Frame'
+          },
+          {
+            src:require('@/assets/traceability.png'),
+            title:'Traceable'
+          },
+          {
+            src:require('@/assets/customize.png'),
+            title:'Customisable'
+          }
+        ]
+    }),
+    methods:{
+      play() {
+        if(this.isPlaying) {
+          this.$refs.videoRef.pause()
+          this.isPlaying = false
+        }
+        else{
+          this.$refs.videoRef.play()
+          this.isPlaying = true
+        }
+      },
+    }
 }
 </script>
 <style scoped>
@@ -88,5 +140,37 @@ export default {
   text-align: center;
   margin-top:200px;
   color:white
+}
+.videoDiv{
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+.container{
+  text-align: center;
+}
+.headerContent{
+  position: absolute;
+  margin: 0 36%;
+  color: white;
+}
+.features h1{
+  text-align: center;
+}
+.featureImages{
+  background-color: #4242;
+  box-shadow: 5px 5px 5px 5px #424242
+}
+.featureText:hover{
+  background-color: #424242;
+  color: white;
+  transition: 1.5s;
+}
+.featureText{
+  padding:16px 10px;
+  text-transform: uppercase;
+}
+.slideText{
+  text-transform: uppercase;
 }
 </style>

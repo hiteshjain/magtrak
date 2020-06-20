@@ -10,7 +10,6 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-responsive-video-background-player": "^1.1.0",
     "vue-router": "^3.3.4",
     "vuetify": "^2.2.11"
   },

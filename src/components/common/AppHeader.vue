@@ -8,7 +8,6 @@
     >
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
-        color="primary"
         @click="drawer = !drawer"
       />
       <div class="imageDiv">
@@ -45,11 +44,11 @@
       </div>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-icon
-            color="primary"
+          <v-avatar
+            size="28"
             v-bind="attrs"
             v-on="on"
-          >mdi-information</v-icon>
+          ><img :src="require('@/assets/caller.png')"></v-avatar>
         </template>
         <v-list>
         <v-list-item>
