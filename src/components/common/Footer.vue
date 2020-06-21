@@ -20,7 +20,7 @@
               />
               <v-responsive
                 v-if="i < social.length -1"
-                :key="`divider-${s}`"
+                :key="`divider-${s.name}`"
                 class="mx-4 shrink hidden-sm-and-down"
                 ma-height="24"
               >
@@ -34,7 +34,7 @@
           cols="12"
           md="6"
         >
-          Copyright &copy; 2020 A product of <a href="http://adishwar.co.in/">Adishwar Telenetworks</a>
+          Copyright &copy; 2020. Marketing By: <a href="http://adishwar.co.in/">Adishwar Telenetworks</a>
         </v-col>
       </v-row>  
     </v-container>    
@@ -42,7 +42,7 @@
 </template>
 <script>
 export default {
-  name: 'footer',
+  name: 'home-footer',
   data: () => ({
     social: [
       {
