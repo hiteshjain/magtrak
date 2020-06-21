@@ -56,7 +56,7 @@
             <v-icon color="primary">mdi-phone</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <a class = "accent--text" href="tel:+917778889000">{{phone}}</a>
+            <a class = "accent--text" href="tel:+918026603114">{{phone}}</a>
           </v-list-item-content>
         </v-list-item>  
         <v-divider inset></v-divider>
