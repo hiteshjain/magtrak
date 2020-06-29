@@ -13,7 +13,7 @@
           <div class="d-flex flex-wrap justify-md-start justify-center justify-md-none">
             <template v-for="(s, i) in social">
               <a
-                :key="s"
+                :key="i"
                 class="white--text pa-1 pa-md-0"
                 href="#"
                 v-text="s.name"

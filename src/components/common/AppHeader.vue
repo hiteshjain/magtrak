@@ -2,12 +2,13 @@
   <div>
     <v-app-bar
       app
-      color="white"
+      color="accent"
       elevation="1"
       height="80"
     >
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
+        color="primary"
         @click="drawer = !drawer"
       />
       <div class="imageDiv">
@@ -15,7 +16,7 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          :src="require('@/assets/logo.png')"
+          :src="require('@/assets/dark-logo.png')"
           transition="scale-transition"
           width="40"
         />
@@ -26,6 +27,8 @@
         <v-tabs
           class="hidden-sm-and-down"
           optional
+          background-color="accent"
+          slider-color="primary"
         >
           <v-tab
             v-for="(name, i) in items"
@@ -33,10 +36,10 @@
             :to="{ name }"
             :exact="name === 'Home'"
             :ripple="false"
-            active-class="text--primary"
+            active-class="secondary"
             class="font-weight-bold primary--text"
             min-width="96"
-            text
+            
           >
             {{ name }}
           </v-tab>
@@ -48,6 +51,7 @@
             size="28"
             v-bind="attrs"
             v-on="on"
+            color="primary"
           ><img :src="require('@/assets/caller.png')"></v-avatar>
         </template>
         <v-list>

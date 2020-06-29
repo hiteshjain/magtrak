@@ -2,7 +2,7 @@
   <v-theme-provider dark>
     <div
       id="info-alt"
-      class="grey darken-4"
+      class="accent"
     >
       <v-responsive
         class="mx-auto"
@@ -80,7 +80,7 @@
                 v-for="product in products"
                 :key="product"
                 :text="product"
-                class="mb-8 grey--text body-1 d-block text-none"
+                class="mb-8 body-1 d-block text-none"
                 href="#"
                 v-html="`&rsaquo; ${product}`"
               />

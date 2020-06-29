@@ -2,6 +2,9 @@
 .v-application {
   font-family: 'Open Sans', sans-serif!important;
 }
+h1 {
+  letter-spacing: 0.5rem !important;
+}
 h3 {
   letter-spacing: 0.1875rem !important;
 }
@@ -13,4 +16,47 @@ h6 {
   letter-spacing: 0.1875rem;
   size: 1rem;
   font-weight: 700
+}
+
+.carousalItems div[class^="v-image__image"] {
+  width: 60%;
+  background-size: 100% 100%;
+  animation: carouselImage 1s 1;
+}
+
+@media screen and (max-width: 768px){
+  .carousalItems div[class^="v-image__image"], .carouselDiv{
+    height:250px!important;
+  }
+
+  .font-20{
+    font-size: 0.75rem;
+    line-height: 2;
+  }
+
+} 
+
+@media screen and (min-width: 769px){
+  
+  .font-20{
+    font-size: 1.47rem;
+    line-height: 2;
+  }
+
+  .is-custom-padding{
+    padding-top: 10%;
+  }
+
+}
+
+@keyframes carouselImage {
+  0%{
+    margin-left: -1000px;;
+  }
+  30% {
+		margin-left: -1000px;
+	}
+	85% {
+		margin-left: -1000px;
+	}
 }
