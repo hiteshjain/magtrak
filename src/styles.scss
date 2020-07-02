@@ -1,3 +1,4 @@
+$dark-font:#424242;
 
 .v-application {
   font-family: 'Open Sans', sans-serif!important;
@@ -17,7 +18,13 @@ h6 {
   size: 1rem;
   font-weight: 700
 }
+/* *********Home Page************ */
 
+.carouselText{
+  span:not(:last-child){
+    color: $dark-font;
+  }
+}
 .carousalItems div[class^="v-image__image"] {
   width: 60%;
   background-size: 100% 100%;
@@ -28,30 +35,29 @@ h6 {
   .carousalItems div[class^="v-image__image"], .carouselDiv{
     height:250px!important;
   }
-
+  .carouselText{
+    h2{
+      font-size: 1rem;
+    }
+  }
   .font-20{
     font-size: 0.75rem;
-    line-height: 2;
   }
-
 } 
 
 @media screen and (min-width: 769px){
-  
   .font-20{
     font-size: 1.47rem;
     line-height: 2;
   }
-
   .is-custom-padding{
-    padding-top: 10%;
+    padding-top: 8%;
   }
-
 }
 
 @keyframes carouselImage {
   0%{
-    margin-left: -1000px;;
+    margin-left: -1000px;
   }
   30% {
 		margin-left: -1000px;
@@ -60,3 +66,4 @@ h6 {
 		margin-left: -1000px;
 	}
 }
+/* End of Home Page */

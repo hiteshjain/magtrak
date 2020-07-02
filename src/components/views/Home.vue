@@ -7,24 +7,21 @@
       show-arrows-on-hover
       >
       <v-carousel-item
-        v-for="(image,i) in images"
+        v-for="(data,i) in carouselData"
         :key="i"
-        :src="image.src"
+        :src="data.src"
         class="carousalItems"
       >
         <v-container class="carouselText">
           <v-row class="is-custom-padding">
-            
-              <v-col cols="7" md="8">
-
-              </v-col>
+              <v-col cols="7" md="8"></v-col>
               <v-col cols="5" md="4">
-          <span class="carouselTextSpan1 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{image.text[0]}}</span>
-          <span class="carouselTextSpan2 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{image.text[1]}}</span>
-          <span class="carouselTextSpan3 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{image.text[2]}}</span>
-          <v-btn class="mt-4" @click.stop="viewProducts(image.url)">View More</v-btn>
+                <h2 class="primary--text">{{data.text[0]}}</h2>
+                <span class="carouselTextSpan1 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{data.text[1]}}</span>
+                <span class="carouselTextSpan2 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{data.text[2]}}</span>
+                <span class="carouselTextSpan3 font-20"><v-icon color="accent">mdi-check-bold</v-icon>{{data.text[3]}}</span>
+                <v-btn rounded class="mt-4" @click.stop="viewProducts(data.url)">View More</v-btn>
               </v-col>
-            
           </v-row>
         </v-container>
       </v-carousel-item>
@@ -33,7 +30,7 @@
       cycle
       height="100"
       hide-delimiter-background
-      show-arrows-on-hover
+      :show-arrows="false"
       delimiter-icon="mdi-minus"
     >
       <v-carousel-item
@@ -49,7 +46,7 @@
             align="center"
             justify="center"
           >
-            <h3 class="ml-4 primary--text slideText">{{ slide.text }}</h3>
+            <h3 class="ml-4 slideText">{{ slide.text }}</h3>
             <div v-if="slide.src"> 
               <v-avatar tile size="62" class="ml-4">
                  <img
@@ -81,9 +78,9 @@
       </v-container>
     </div>
     <div class="process mt-15 accent pt-10">
-      <h1 class="primary--text">PROCESS</h1>
+      <h1 class="secondary--text">PROCESS</h1>
       <v-container class="text-center">
-        <v-row>
+        <v-row style="min-height: 360px">
           <v-col 
             v-for="(steps, i) in process"
             :key="i"
@@ -91,10 +88,13 @@
             sm="4"
           >
             <v-avatar size="240" class="processText">
-              <h2>{{i}}</h2>
+              <img
+              :src="steps.src"
+              alt=""
+            >
             </v-avatar>
             <div>
-              <h3 class="mx-15 pt-10 primary--text">{{steps}} </h3>
+              <h3 class="mx-15 pt-10 secondary--text">{{steps.title}} </h3>
             </div>
           </v-col>
         </v-row>
@@ -130,52 +130,65 @@ let countryInterval,clientInterval,viewerInterval;
 export default {
   name:'Home',
   data:()=>({
-      countries:0,
-      clients:0,
-      width:window.screen.width,
-      check:true,
-      viewers:0,
-      images: [
-        {
-          src: require('../../assets/duct-rooder-conduit-workers.jpg'),
-          text:['Accurate Dimension','Solid Frame','Traceable'],
-          url:'products'
-        },
-        {
-          src: require('../../assets/frp-duct-rodder-details.jpg'),
-          text:['8 locating Modes','Automatic Impedence','High-Contrast LCD Interface'],
-          url:'products'
-        },
-        {
-          src:require('@/assets/Mid_Sonde.jpg'),
-          text:['Exceptional cast iron penetration','Rugged design','Multiple frequencies designed'],
-          url:'products'
-        }
-      ],
-      textSlides:[
-        {text:'Over 1 Lakh Pieces'},
-        {text:'More than 100+ Happy Customers'},
-        {text:'Make in India Initiative',src:require('../../assets/make-in-india-logo.jpg')}
-      ],
-      features:[
-        {
-          src:require('@/assets/dimension.png'),
-          title:'Accurate Dimension'
-        },
-        {
-          src:require('@/assets/reliability.png'),
-          title:'Solid Frame'
-        },
-        {
-          src:require('@/assets/traceability.png'),
-          title:'Traceable'
-        },
-        {
-          src:require('@/assets/customize.png'),
-          title:'Customisable'
-        }
-      ],
-      process:['Track','Survey','Locate']
+    countries:0,
+    clients:0,
+    width:window.screen.width,
+    check:true,
+    viewers:0,
+    carouselData: [
+      {
+        src: require('../../assets/duct-rooder-conduit-workers.jpg'),
+        text:['Duct Rodder','Accurate Dimension','Solid Frame','Traceable'],
+        url:'products'
+      },
+      {
+        src: require('../../assets/locator.png'),
+        text:['Locator','8 locating Modes','Automatic Impedence','High-Contrast LCD Interface'],
+        url:'products'
+      },
+      {
+        src:require('@/assets/MidSonde.png'),
+        text:['Sonde','Exceptional cast iron penetration','Rugged design','Multiple frequencies designed'],
+        url:'products'
+      }
+    ],
+    textSlides:[
+      {text:'Over 1 Lakh Pieces'},
+      {text:'More than 100+ Happy Customers'},
+      {text:'Make in India Initiative',src:require('../../assets/make-in-india-logo.jpg')}
+    ],
+    features:[
+      {
+        src:require('@/assets/dimension.png'),
+        title:'Accurate Dimension'
+      },
+      {
+        src:require('@/assets/reliability.png'),
+        title:'Solid Frame'
+      },
+      {
+        src:require('@/assets/traceability.png'),
+        title:'Traceable'
+      },
+      {
+        src:require('@/assets/customize.png'),
+        title:'Customisable'
+      }
+    ],
+    process:[
+      {
+        src:require('@/assets/duct_rodder.png'),
+        title:'Track'
+      },
+      {
+        src:require('@/assets/locator.png'),
+        title:'Survey'
+      },
+      {
+        src:require('@/assets/MidSonde.png'),
+        title:'Locate'
+      }
+    ],
   }),
   mounted(){
     clientInterval = setInterval(() => {
@@ -216,7 +229,17 @@ export default {
 .carouselText {
   span{
     display: block;
-    color:#42A5f5!important;
+  }
+  h2{
+    text-transform: uppercase;
+    animation: text1 1.5s 1;
+  }
+  button{
+    &:hover{
+      color: #42A5F5;
+      transition: 0.5s;
+      border: 1px solid;
+    }
   }
 }
 .carouselTextSpan1{
@@ -233,12 +256,10 @@ export default {
 		margin-bottom: -500px;
 	}
 	30% {
-		letter-spacing: 25px !important;
-		margin-bottom: -300px;
+		margin-bottom: -500px;
 	}
 	85% {
-		letter-spacing: 8px !important;
-		margin-bottom: -300px;
+		margin-bottom: -500px;
 	}
 }
 .carouselItems {
@@ -274,8 +295,9 @@ export default {
   border: solid white 1px;
   color:white;
   &:hover {
-    background: linear-gradient(90deg, #5192e1, #23ced5);
-    transition: 1s;
+    height: 252px!important;
+    min-width: 252px!important;
+    width: 252px!important;
   }
 }
 </style>

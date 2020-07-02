@@ -23,7 +23,7 @@
                     width="100%"
                 />
 
-                <p style="color: white;">
+                <p style="color: white;" class="hidden-xs-only">
                   Built with Magtrak SAF Technology at its core, the Magtrak Precision Locating System from Adishwar Tele-network is adeal for congested locates in crowded easements, long runs of pipe and cable as well as basic service drops. This simple, accurate and affordable locator is designed for those committed to protecting buried infrastructure.
                 </p>
 

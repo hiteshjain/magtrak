@@ -4,7 +4,7 @@
       app
       color="accent"
       elevation="1"
-      height="80"
+      height="70"
     >
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
@@ -18,14 +18,14 @@
           contain
           :src="require('@/assets/dark-logo.png')"
           transition="scale-transition"
-          width="40"
+          width="140"
         />
       </div>
 
       <v-spacer></v-spacer>
         <div>
         <v-tabs
-          class="hidden-sm-and-down"
+          class="hidden-sm-and-down headerTabs"
           optional
           background-color="accent"
           slider-color="primary"
@@ -36,10 +36,9 @@
             :to="{ name }"
             :exact="name === 'Home'"
             :ripple="false"
-            active-class="secondary"
-            class="font-weight-bold primary--text"
+            active-class="primary--text"
+            class="font-weight-bold"
             min-width="96"
-            
           >
             {{ name }}
           </v-tab>
@@ -47,12 +46,7 @@
       </div>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-avatar
-            size="28"
-            v-bind="attrs"
-            v-on="on"
-            color="primary"
-          ><img :src="require('@/assets/caller.png')"></v-avatar>
+          <v-icon v-bind="attrs" v-on="on" color="primary">mdi-phone</v-icon>
         </template>
         <v-list>
         <v-list-item>
@@ -113,5 +107,8 @@ export default {
     position: inherit;
     
   }
+}
+.headerTabs > .v-tabs-bar .v-tab:not(.v-tab--active){
+  color:white
 }
 </style>
