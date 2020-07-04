@@ -50,7 +50,7 @@
                 <template v-for="({ icon, text, title: t }, i) in business">
                   <v-icon style="display:inline;" size="40" :key="i">{{icon}}</v-icon>
                   <v-card
-                    :key="i"
+                    :key="text"
                     :outlined="false"
                     color="transparent"
                     horizontal

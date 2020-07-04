@@ -1,13 +1,16 @@
 $dark-font:#424242;
 
 .v-application {
-  font-family: 'Open Sans', sans-serif!important;
+  font-family: 'Montserrat', sans-serif!important;
 }
 h1 {
   letter-spacing: 0.5rem !important;
+  font-weight: normal;
 }
 h3 {
   letter-spacing: 0.1875rem !important;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 h5 {
   letter-spacing: 0.1875rem;
@@ -17,6 +20,9 @@ h6 {
   letter-spacing: 0.1875rem;
   size: 1rem;
   font-weight: 700
+}
+p{
+  font-size: 1.2rem;
 }
 /* *********Home Page************ */
 

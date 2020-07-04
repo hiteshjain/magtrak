@@ -3,7 +3,6 @@
     <v-app-bar
       app
       color="accent"
-      elevation="1"
       height="70"
     >
       <v-app-bar-nav-icon

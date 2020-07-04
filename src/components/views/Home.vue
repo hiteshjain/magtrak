@@ -25,6 +25,7 @@
           </v-row>
         </v-container>
       </v-carousel-item>
+      <v-progress-linear :value="number" absolute bottom color="primary"></v-progress-linear>
     </v-carousel>
     <v-carousel
       cycle
@@ -135,6 +136,8 @@ export default {
     width:window.screen.width,
     check:true,
     viewers:0,
+    number: 16.6,
+    loading: true,
     carouselData: [
       {
         src: require('../../assets/duct-rooder-conduit-workers.jpg'),
@@ -190,7 +193,18 @@ export default {
       }
     ],
   }),
+  watch:{
+    number(val){
+      if(val > 100){
+        this.number=16.6;
+      }
+    }
+  },
+  beforeDestroy () {
+    clearInterval(this.interval)
+  },
   mounted(){
+    this.startBuffer()
     clientInterval = setInterval(() => {
       this.clients++;
     }, 600);
@@ -216,7 +230,12 @@ export default {
   methods:{
     viewProducts(path){
       this.$router.push(path)
-    }
+    },
+    startBuffer () {
+      this.interval = setInterval(()=>{
+          this.number += 16.6
+        },1000)
+    },
   },
 }
 </script>
@@ -292,12 +311,14 @@ export default {
 	text-transform: uppercase;
 }
 .processText{
-  border: solid white 1px;
+  border: solid white 3px;
   color:white;
+  background-color: white;
   &:hover {
     height: 252px!important;
     min-width: 252px!important;
     width: 252px!important;
+    border-color: #42A5F5;
   }
 }
 </style>
