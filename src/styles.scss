@@ -4,13 +4,23 @@ $dark-font:#424242;
   font-family: 'Montserrat', sans-serif!important;
 }
 h1 {
-  letter-spacing: 0.5rem !important;
+  line-height: 1;
   font-weight: normal;
+  font-size: 2.5rem;
+}
+h2{
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1;
 }
 h3 {
-  letter-spacing: 0.1875rem !important;
-  font-weight: 500;
+  font-weight: normal;
   font-size: 1.5rem;
+  line-height: 1.2;
+}
+h4{
+  font-size: 1.125rem;
+  line-height: 1.2;
 }
 h5 {
   letter-spacing: 0.1875rem;
@@ -21,8 +31,12 @@ h6 {
   size: 1rem;
   font-weight: 700
 }
+.bottom30{
+  margin-bottom: 30px;
+}
 p{
-  font-size: 1.2rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
 }
 /* *********Home Page************ */
 
@@ -73,3 +87,8 @@ p{
 	}
 }
 /* End of Home Page */
+/* *******Products Page******* */
+.panelHeader div:last-child{
+  float: right!important;
+}
+/* End of Products Page */

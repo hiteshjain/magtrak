@@ -49,7 +49,7 @@
           >
             <h3 class="ml-4 slideText">{{ slide.text }}</h3>
             <div v-if="slide.src"> 
-              <v-avatar tile size="62" class="ml-4">
+              <v-avatar tile size="72" class="ml-5">
                  <img
                     :src="slide.src"
                     alt=""
@@ -140,7 +140,7 @@ export default {
     loading: true,
     carouselData: [
       {
-        src: require('../../assets/duct-rooder-conduit-workers.jpg'),
+        src: require('../../assets/duct-rodder.jpg'),
         text:['Duct Rodder','Accurate Dimension','Solid Frame','Traceable'],
         url:'products'
       },
@@ -158,7 +158,7 @@ export default {
     textSlides:[
       {text:'Over 1 Lakh Pieces'},
       {text:'More than 100+ Happy Customers'},
-      {text:'Make in India Initiative',src:require('../../assets/make-in-india-logo.jpg')}
+      {text:'Make in India Initiative',src:require('../../assets/make-in-India.png')}
     ],
     features:[
       {
