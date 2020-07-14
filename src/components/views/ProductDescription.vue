@@ -48,24 +48,21 @@
       </div>
     </div>
     <div>
-      <v-container>
-          <v-expansion-panels accordian>
-            <v-expansion-panel>
-              <v-expansion-panel-header @click="expansion=!expansion">
-                <h1>Technical Specs</h1>
-                <template v-slot:actions>
-                  <v-icon v-if="!expansion">mdi-plus-thick</v-icon>
-                  <v-icon v-else large>mdi-minus</v-icon>
-                </template>
+      <v-container class="specifications">
+          <v-expansion-panels accordion focusable>
+            <h1 class="mb-6">Technical Specs</h1>
+            <v-expansion-panel v-for="specs in products.specifications" :key="specs.icon">
+              <v-expansion-panel-header>
+                <h3>{{specs.name}}</h3>
               </v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-row>
-                <v-col cols="12" sm="4" class="px-6" v-for="specs in products.specifications" :key="specs.icon">
+                <v-col cols="12" sm="4" class="px-6" v-for="spec in specs.data" :key="spec.icon">
                   <div class="d-flex">
-                    <v-icon large class="d-flex" color="primary">{{specs.icon}}</v-icon>
-                    <h4 class="mt-2 ml-3">{{specs.spec_name}}</h4>
+                    <v-icon large class="d-flex" color="primary">{{spec.icon}}</v-icon>
+                    <h4 class="mt-2 ml-3">{{spec.spec_name}}</h4>
                   </div>
-                  <p class="text-justify pt-3">{{specs.spec_description}}</p>
+                  <p class="text-justify pt-3">{{spec.spec_description}}</p>
                 </v-col>
               </v-row>
             </v-expansion-panel-content>
@@ -84,9 +81,6 @@ export default {
         default: () => ({}),
       },
     },
-    data:()=>({
-      expansion:false,
-    }),
     methods:{
       downloadFile(file){
         var downloadPdf = document.createElement('a');
@@ -104,9 +98,12 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-h1{
+
+  h1, .specifications h3{
   text-align: center;
   text-transform: uppercase;
   color: #424242;
-}
+  }
+
+
 </style>
