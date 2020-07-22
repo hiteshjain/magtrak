@@ -1,5 +1,24 @@
 <template>
   <div>
+    <v-img
+      :src="require('@/assets/about.jpg')"
+      :height="$vuetify.breakpoint.mdAndUp ? 350 : 225"
+      gradient="to top, rgba(5, 11, 31, 0.8), rgba(5, 11, 31, 0.8)"
+      flat
+      max-width="100%"
+      tile
+    >
+      <v-row
+        align="center"
+        class="ma-0 fill-height text-center"
+        justify="center"
+      >
+        <v-col cols="12">
+          <h1 class="secondary--text mb-4">ABOUT US</h1>
+          <v-divider class="primary divider ma-auto"/>
+        </v-col>
+      </v-row>
+    </v-img> 
     <v-container>
       <v-row style="min-height: 300px" >
         <v-col cols="12" sm="6">
@@ -18,3 +37,9 @@ export default {
     name : 'About',
 }
 </script>
+<style lang="scss" scoped>
+.divider {
+    max-width: 40px;
+    border-width: 3px 0 0 0 !important
+}
+</style>

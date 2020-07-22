@@ -268,6 +268,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .headerTabs > .v-tabs-bar .v-tab:not(.v-tab--active){
-  color:#424242
+  color:#424242;
+  &:hover {
+    background: #E9F4FE;
+  }
 }
 </style>
